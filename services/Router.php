@@ -6,10 +6,14 @@ require "./configs/settings.php";
 
 class Router {
     
-    private $controller;
-    private $method;
+    private string $controller;
+    private string $method;
     
-    public function __construct($page){
+    public function __construct(string $page){
+        
+        if (!array_key_exists($page, AVAILABLE_ROUTES)) {
+            $page = '/';
+        }
         
         $this -> controller = AVAILABLE_ROUTES[$page]['controller'];
         $this -> method = AVAILABLE_ROUTES[$page]['method'];

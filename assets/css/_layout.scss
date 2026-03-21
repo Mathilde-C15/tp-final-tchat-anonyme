@@ -1,0 +1,41 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    background-color: #2F3136;
+    color: $text-color;
+    height: 80px;
+    padding: 0 2em;
+
+    div:first-of-type{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        h1 {
+            font-size: 1em;
+        }
+        img {
+            height: 50px;
+            width: 50px;
+        }
+    }   
+
+    div:last-of-type {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1em;    
+
+        a {
+            text-decoration: none;
+            color: $text-color;
+        }
+    }
+}
+
+main {
+    display: flex;
+    height: calc(100vh - 80px);
+    width: 100%
+}

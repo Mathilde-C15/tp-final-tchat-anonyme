@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/tp-final-tchat-anonyme/assets/css/style.css">
     <title>Tchat Anonyme</title>
 </head>
 <body>
+    <header>
+        <div>
+            <h1>Tchat anonyme</h1>
+            <img src="assets/images/logo.png" alt="Logo tchat anonyme">
+        </div>
+        <div>
+            <a href="">Chat</a>
+            <a href="">A propos</a>
+        </div>
+    </header>
 
-    <?php include "$view" ?>
-    
+    <main>
+        <aside class="rooms">
+            <?php include "views/room/room.phtml" ?>
+        </aside>
+    </main>
 </body>
 </html>

@@ -5,23 +5,39 @@ namespace Controllers;
 use Repositories\RoomRepository;
 
 class RoomController{
+
+    public function index(): void{
+        $repository = new RoomRepository();
+        $rooms = $repository->findRooms();
+
+        $title = "Liste des salons";
+        $view = "views/room/room.phtml";
+
+        require "views/layout.phtml";
+    }
+
+
     public function create(): void{
-        if ($_SERVEUR['REQUEST_METHOD'] === 'POST'){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             $name = $_POST['name'] ?? '';
 
             try {
                 $repository = new RoomRepository();
                 $repository->createRoom($name);
 
-                header('Location: index.php.page=rooms');
+                header('Location: index.php.page=room');
                 exit;
             } catch (\Exception $e) {
                 $error = $e-getMessage();
             }
         }
 
+        $rooms = $repository->findRooms();
+        $title = "Créer un salon";
         $view = "views/room/room.phtml";
 
         require "views/layout.phtml";
     }
+
+    
 }

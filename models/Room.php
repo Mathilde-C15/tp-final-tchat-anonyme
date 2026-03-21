@@ -6,8 +6,14 @@ class Room {
     private string $name;
     private int $id;
 
-    public function __construct(int $name){
-        $this->name = $name;
+    public function __construct(?string $name = null, ?int $id = null){
+        if ($name !== null) {
+            $this->setName($name);
+        }
+
+        if ($id !== null) {
+            $this->setId($id);
+        }
     }
 
     // Getters
@@ -17,13 +23,13 @@ class Room {
     }
 
     public function getId(): int{
-        return $this->Id;
+        return $this->id;
     }
 
     // Setters
     public function setName(string $name): void{
-        if (!preg_match('/^[a-zA-Z0-9À-ÿ\s\-\',.!?]{3,20}$/u', $name)) {
-            throw new \Exception("Titre invalide (3 à 20 caractères, lettres et chiffres uniquement)");
+        if (!preg_match('/^[a-zA-Z0-9À-ÿ\s\-\',.!?]{3,50}$/u', $name)) {
+            throw new \Exception("Titre invalide (3 à 50 caractères, lettres et chiffres uniquement)");
         }
 
         $this->name = trim($name);        

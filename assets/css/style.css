@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  background-color: #2F3136;
+  color: #fff;
+  height: 80px;
+  padding: 0 2em;
+}
+header div:first-of-type {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+header div:first-of-type h1 {
+  font-size: 1em;
+}
+header div:first-of-type img {
+  height: 50px;
+  width: 50px;
+}
+header div:last-of-type {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+}
+header div:last-of-type a {
+  text-decoration: none;
+  color: #fff;
+}
+
+main {
+  display: flex;
+  height: calc(100vh - 80px);
+  width: 100%;
+}
+
+.rooms {
+  background-color: #5d6068;
+  padding: 10px;
+  width: 15%;
+  text-align: center;
+  padding-top: 1em;
+}
+.rooms a {
+  color: #fff;
+  text-decoration: none;
+}
+.rooms .create {
+  margin-bottom: 5em;
+  padding: 10px 20px;
+}
+.rooms .create:hover {
+  background-color: #36393F;
+}
+.rooms div {
+  width: 100%;
+  padding: 10px 20px;
+}
+.rooms div:hover {
+  background-color: #4c5058;
+}
+.rooms div:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/*# sourceMappingURL=style.css.map */

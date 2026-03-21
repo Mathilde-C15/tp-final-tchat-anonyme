@@ -15,15 +15,15 @@ const AVAILABLE_ROUTES = [
     ],
     'add_room' => [
         'controller' => 'RoomController',
-        'method' => 'index'
+        'method' => 'create'
     ],
     'pin_message' => [
         'controller' => 'MessageController',
-        'method' => 'index'
+        'method' => 'pinMessage'
     ],
     'add_message' => [
         'controller' => 'MessageController',
-        'method' => 'index'
+        'method' => 'create'
     ]
 
 ];
