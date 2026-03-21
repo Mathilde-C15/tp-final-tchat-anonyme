@@ -11,7 +11,7 @@ const AVAILABLE_ROUTES = [
     ],
     'about' => [
         'controller' => 'AboutController',
-        'method' => 'index'
+        'method' => 'about'
     ],
     'add_room' => [
         'controller' => 'RoomController',

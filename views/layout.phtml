@@ -13,15 +13,22 @@
             <img src="assets/images/logo.png" alt="Logo tchat anonyme">
         </div>
         <div>
-            <a href="">Chat</a>
-            <a href="">A propos</a>
+            <a href="index.php?url=room">Chat</a>
+            <a href="index.php?url=about">A propos</a>
         </div>
     </header>
 
     <main>
-        <aside class="rooms">
-            <?php include "views/room/room.phtml" ?>
-        </aside>
+        <?php if (!isset($showSidebar) || $showSidebar !== false): ?>
+            <aside class="rooms">
+                <?php include "views/room/room.phtml" ?>
+            </aside>
+        <?php endif; ?>
+
+        <section>
+            <?php include $view ?>
+        </section>
+
     </main>
 </body>
 </html>

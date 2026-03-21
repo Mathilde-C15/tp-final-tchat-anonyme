@@ -1,13 +1,13 @@
-<a href="index.php?page=add_room" class="create">+ Créer un salon</a>
-
-<?php foreach ($rooms as $room): ?>
-    <div class="rooms">
-        <a href="index.php?page=room&id=<?= $room->getId() ?>">
-            <?= htmlspecialchars($room->getName()) ?>
-        </a>
-    </div>
-<?php endforeach ?>
-
-<?php if (isset($error)): ?>
-    <div class="error"><?= $error ?></div>
-<?php endif ?>
+    <a href="index.php?page=add_room" class="create">+ Créer un salon</a>
+    
+    <?php foreach ($rooms as $room): ?>
+        <div class="rooms">
+            <a href="index.php?page=room&id=<?= $room->getId() ?>">
+                <?= htmlspecialchars($room->getName()) ?>
+            </a>
+        </div>
+    <?php endforeach ?>
+    
+    <?php if (isset($error)): ?>
+        <div class="error"><?= $error ?></div>
+    <?php endif ?>
