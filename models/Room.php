@@ -1,9 +1,10 @@
 <?php
 
-namespace Model;
+namespace Models;
 
 class Room {
-    private int $name;
+    private string $name;
+    private int $id;
 
     public function __construct(int $name){
         $this->name = $name;
@@ -11,16 +12,29 @@ class Room {
 
     // Getters
 
-    public function getName(){
+    public function getName(): string{
         return $this->name;
     }
 
+    public function getId(): int{
+        return $this->Id;
+    }
+
     // Setters
-    public function setName($name): int{
+    public function setName(string $name): void{
         if (!preg_match('/^[a-zA-Z0-9À-ÿ\s\-\',.!?]{3,20}$/u', $name)) {
-            throw new \Exception("Titre invalide (3 à 255 caractères, lettres et chiffres uniquement)");
+            throw new \Exception("Titre invalide (3 à 20 caractères, lettres et chiffres uniquement)");
         }
 
         $this->name = trim($name);        
+    }
+
+    public function setId(int $id): void{
+        
+        if (!preg_match('/^[0-9]+$/', $id)) {
+            throw new \Exception("ID invalide");
+        }
+
+        $this->id = (int) $id;
     }
 }

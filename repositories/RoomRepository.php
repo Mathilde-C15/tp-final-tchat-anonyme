@@ -1,9 +1,9 @@
 <?php
 
-namespace Repository;
+namespace Repositories;
 
 use Services\DataBase;
-use Model\Room;
+use Models\Room;
 use PDO;
 
 class RoomRepository{
@@ -11,7 +11,19 @@ class RoomRepository{
 
     public function __construct(){
         $db = new DataBase();
-        $this->db = $db->getConnection();
+        $this->pdo = $db->getConnection();
+    }
+
+    // Créer une room
+    public function createRoom(string $name){
+        $stmt = $this->pdo->prepare("INSERT INTO `room` (name) VALUES (:name)");
+        $stmt->execute(['name' => $name]);
+
+        $room = new Room();
+        $room->setId((int) $this->pdo->lastInsertId());
+        $room->setName($name);
+
+        return $room;
     }
 
     // retourne toutes les rooms
@@ -22,14 +34,14 @@ class RoomRepository{
         $rooms = [];
 
         foreach ($rows as $row) {
-            $room = new Post();
+            $room = new Room();
             $room->setId($row['id']);
             $room->setName($row['name']);
             
-            $room[] = $room;
+            $rooms[] = $room;
         }
 
-        return $room;
+        return $rooms;
     }
 
     // retourne une seule room

@@ -3,8 +3,9 @@
 namespace Services;
 
 use PDO;
+use PDOException;
 
-class Database
+class DataBase
 {
     // Attributs privés
     private string $host = "localhost";
@@ -40,7 +41,3 @@ class Database
 
 // $bd = new Database();
 // var_dump($bd-> getConnection());
-
-
-
-

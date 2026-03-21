@@ -1,5 +1,7 @@
 <?php
 
+namespace Models;
+
 class Message {
     private int $id;
     private string $content;
