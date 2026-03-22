@@ -1,0 +1,159 @@
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 80px);
+    background-color: $tchat-bg;
+    color: $text-color;
+
+    .chat-header {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        width: 100%;
+        padding: 1em;
+        border-bottom: 1px solid #3a3c43;
+    }
+
+    .pinned-message {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 15px;
+        background-color: #393c43;
+        border-bottom: 1px solid #3a3c43;
+        font-size: 14px;
+
+        .message-date {
+            color: #72767d;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .message-content {
+            color: #dcddde;
+            flex: 1;
+        }
+
+        .unpin-btn {
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            color: $logo-color;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+
+            &:hover {
+                background-color: #2f3136;
+            }
+        }
+    }
+
+    .chat-messages {
+        padding: 15px;
+        overflow-y: auto;
+        flex: 1;
+        min-height: 0;
+
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #202225;
+            border-radius: 3px;
+        }
+
+        .chat-message {
+            padding: 8px 0;
+            border-bottom: 1px solid #3a3c43;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-size: 14px;
+            position: relative;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            &:hover {
+                background-color: #393c43;
+
+                .pin-btn {
+                    opacity: 1;
+                }
+            }
+
+            .message-date {
+                color: #72767d;
+                font-size: 13px;
+                white-space: nowrap;
+            }
+
+            .message-content {
+                color: #dcddde;
+                flex: 1;
+            }
+
+            .pin-btn {
+                text-decoration: none;
+                opacity: 0;
+                transition: opacity 0.2s ease;
+                font-size: 14px;
+                cursor: pointer;
+                padding-right: 1em;
+                color: $logo-color;
+            }
+        }
+
+        .no-message {
+            color: #72767d;
+            font-style: italic;
+        }
+    }
+
+    .chat-form {
+        border-top: 1px solid #3a3c43;
+        background-color: #2f3136;
+        padding: 15px;
+        margin-top: auto;
+
+        form {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        label {
+            color: #dcddde;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 8px 10px;
+            border: 1px solid #8b8d92;
+            font-size: 14px;
+            outline: none;
+            background-color: #40444b;
+            color: #dcddde;
+
+            &::placeholder {
+                color: #72767d;
+            }
+        }
+
+        button {
+            padding: 8px 14px;
+            border: 1px solid #8b8d92;
+            background-color: #f3f3f3;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #e5e5e5;
+            }
+        }
+    }
+}

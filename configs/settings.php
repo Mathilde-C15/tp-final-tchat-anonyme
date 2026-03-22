@@ -20,13 +20,17 @@ const AVAILABLE_ROUTES = [
     'pin_message' => [
         'controller' => 'MessageController',
         'method' => 'pinMessage'
+    ],    
+    'unpin_message' => [
+        'controller' => 'MessageController',
+        'method' => 'unpinMessage'
     ],
     'add_message' => [
         'controller' => 'MessageController',
         'method' => 'create'
     ],
     'message' => [
-        'controller' => 'RoomController',
+        'controller' => 'MessageController',
         'method' => 'showMessages',
     ]
 

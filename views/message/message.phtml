@@ -1,19 +1,41 @@
 <div class="chat-container">
     <div class="chat-header">
         <h2><?= htmlspecialchars($room->getName()) ?></h2>
-        <a href="index.php?page=room" class="unpin-btn">Désépingler</a>
     </div>
+
+    <?php if (isset($pinnedMessage) && $pinnedMessage !== null): ?>
+        <div class="pinned-message">
+            <span class="message-date">
+                [<?= htmlspecialchars($pinnedMessage->getDate()) ?>]
+            </span>
+
+            <span class="message-content">
+                <?= htmlspecialchars($pinnedMessage->getContent()) ?>
+            </span>
+
+            <a href="index.php?page=unpin_message&id=<?= $pinnedMessage->getId() ?>&room_id=<?= $room->getId() ?>"
+            class="unpin-btn"
+            title="Désépingler ce message">
+                Désépingler
+            </a>
+        </div>
+    <?php endif; ?>
 
     <div class="chat-messages">
         <?php if (!empty($messages)): ?>
             <?php foreach ($messages as $message): ?>
                 <div class="chat-message">
+                    
                     <span class="message-date">
                         [<?= htmlspecialchars($message->getDate()) ?>]
                     </span>
+
                     <span class="message-content">
                         <?= htmlspecialchars($message->getContent()) ?>
                     </span>
+
+                    <a href="index.php?page=pin_message&id=<?= $message->getId() ?>&room_id=<?= $room->getId() ?>"
+                    class="pin-btn" title="Épingler ce message">Epingler</a>
                 </div>
             <?php endforeach; ?>
         <?php else: ?>

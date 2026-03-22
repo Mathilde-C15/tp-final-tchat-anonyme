@@ -1,34 +1,16 @@
-.rooms {
-    background-color: #5d6068;
-    padding: 10px;
-    width: 15%;
-    text-align: center;
-    padding-top: 1em;
+.room-index {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: calc(100vh - 80px);    
+    background-color: $tchat-bg;
+    color: $text-color;
 
-    a {
-        color: $text-color;
-        text-decoration: none;
+    h2 {
+        padding: 1em;
+        font-size: 2em;
     }
 
-    .create {
-        margin-bottom: 5em;
-        padding: 10px 20px;
 
-        &:hover {
-            background-color: #36393F;
-        }
-    }
-
-    div {
-        width: 100%;
-        padding: 10px 20px;
-        &:hover {
-
-            background-color: #4c5058;
-        }
-
-        &:not(:last-child) {
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-        }
-    }
 }

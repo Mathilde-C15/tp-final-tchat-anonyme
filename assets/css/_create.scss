@@ -48,7 +48,7 @@
                 }
 
                 &:not(.cancel) {
-                    background: #4CAF50;
+                    background: $logo-color;
                     color: white;
                 }
             }

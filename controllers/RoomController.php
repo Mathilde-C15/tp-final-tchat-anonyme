@@ -40,41 +40,4 @@ class RoomController{
         $view = "views/room/createRoom.phtml";
         require "views/layout.phtml";
     }
-
-    public function showMessages(): void
-    {
-        $roomRepository = new RoomRepository();
-        $messageRepository = new MessageRepository();
-
-        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-            echo "Room invalide";
-            return;
-        }
-
-        $id = (int) $_GET['id'];
-
-        $room = $roomRepository->findOneRoomById($id);
-
-        if (!$room) {
-            echo "Salon introuvable";
-            return;
-        }
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $content = trim($_POST['content'] ?? '');
-
-            if ($content !== '') {
-                $messageRepository->createMessage($content, $id);
-                header('Location: index.php?page=message&id=' . $id);
-                exit;
-            }
-        }
-
-        $rooms = $roomRepository->findRooms();
-        $messages = $messageRepository->getMessagesByRoom($id);
-
-        $view = __DIR__ . '/../views/message/message.phtml';
-
-        require __DIR__ . '/../views/layout.phtml';
-    }
 }
