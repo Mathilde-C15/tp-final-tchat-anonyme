@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Repositories\RoomRepository;
+use Repositories\MessageRepository;
 
 class RoomController{
 
@@ -14,9 +15,6 @@ class RoomController{
 
         require "views/layout.phtml";
     }
-
-
-
 
     public function create(): void {
         $repository = new RoomRepository();
@@ -43,5 +41,30 @@ class RoomController{
         require "views/layout.phtml";
     }
 
+    public function showMessages(): void{
+        $roomRepository = new RoomRepository();
+        $messageRepository = new MessageRepository();
+
+        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+            echo "Room invalide";
+            return;
+        }
+
+        $id = (int) $_GET['id'];
+
+        $room = $roomRepository->findOneRoomById($id);
+
+        if (!$room) {
+            echo "Salon introuvable";
+            return;
+        }
+
+        $rooms = $roomRepository->findRooms();
+        $messages = $messageRepository->getMessagesByRoom($id);
+
+        $view = __DIR__ . '/../views/message/message.phtml';
+
+        require __DIR__ . '/../views/layout.phtml';
+    }
     
 }

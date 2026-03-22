@@ -45,10 +45,10 @@ class RoomRepository{
     }
 
     // retourne une seule room
-    public function findOneRoomById($id)
-    {
-        $stmt = $this->pdo->prepare("SELECT * FROM room WHERE id = ?");
-        $stmt->execute([$id]);
+    public function findOneRoomById(int $id): ?Room{
+
+        $stmt = $this->pdo->prepare("SELECT * FROM room WHERE id = :id");
+        $stmt->execute(['id' => $id]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if (!$row) {

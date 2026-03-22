@@ -1,0 +1,34 @@
+<div class="chat-container">
+    <div class="chat-header">
+        <h2><?= htmlspecialchars($room->getName()) ?></h2>
+        <a href="index.php?page=room" class="unpin-btn">Désépingler</a>
+    </div>
+
+    <div class="chat-messages">
+        <?php if (!empty($messages)): ?>
+            <?php foreach ($messages as $message): ?>
+                <div class="chat-message">
+                    <span class="message-date">
+                        [<?= htmlspecialchars($message->getDate()) ?>]
+                    </span>
+                    <span class="message-content">
+                        <?= htmlspecialchars($message->getContent()) ?>
+                    </span>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p class="no-message">Aucun message dans ce salon.</p>
+        <?php endif; ?>
+    </div>
+
+    <div class="chat-form">
+        <form action="index.php?page=send_message" method="POST">
+            <input type="hidden" name="id_room" value="<?= $room->getId() ?>">
+
+            <label for="content">Message</label>
+            <input type="text" id="content" name="content" required>
+
+            <button type="submit">Envoyer</button>
+        </form>
+    </div>
+</div>

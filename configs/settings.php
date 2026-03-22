@@ -24,6 +24,10 @@ const AVAILABLE_ROUTES = [
     'add_message' => [
         'controller' => 'MessageController',
         'method' => 'create'
+    ],
+    'message' => [
+        'controller' => 'RoomController',
+        'method' => 'showMessages',
     ]
 
 ];

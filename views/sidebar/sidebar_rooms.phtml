@@ -1,9 +1,9 @@
 <a href="#" class="create">+ Créer un salon</a>
 
-<?php foreach ($rooms as $room): ?>
+<?php foreach ($rooms as $sidebarRoom): ?>
     <div class="room-item">
-        <a href="index.php?page=room&id=<?= $room->getId() ?>">
-            <?= htmlspecialchars($room->getName()) ?>
+        <a href="index.php?page=message&id=<?= $sidebarRoom->getId() ?>">
+            <?= htmlspecialchars($sidebarRoom->getName()) ?>
         </a>
     </div>
 <?php endforeach ?>

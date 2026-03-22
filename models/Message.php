@@ -6,7 +6,7 @@ class Message {
     private int $id;
     private string $content;
     private int $date;
-    private int $pinned;
+    private int $pinned = 0;
 
     public function __construct(int $id, string $content, int $date, int $pinned){
         $this->id = $id;
@@ -60,6 +60,10 @@ class Message {
         }
 
         $this->date = $date;
+    }
+
+    public function pinMessage(): void{
+        $this->pinned = 1;
     }
 
 }
