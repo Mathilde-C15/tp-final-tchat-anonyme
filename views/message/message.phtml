@@ -22,7 +22,7 @@
     </div>
 
     <div class="chat-form">
-        <form action="index.php?page=send_message" method="POST">
+        <form action="index.php?page=message&id=<?= $room->getId() ?>" method="POST">
             <input type="hidden" name="id_room" value="<?= $room->getId() ?>">
 
             <label for="content">Message</label>

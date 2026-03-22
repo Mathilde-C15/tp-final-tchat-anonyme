@@ -41,7 +41,8 @@ class RoomController{
         require "views/layout.phtml";
     }
 
-    public function showMessages(): void{
+    public function showMessages(): void
+    {
         $roomRepository = new RoomRepository();
         $messageRepository = new MessageRepository();
 
@@ -59,6 +60,16 @@ class RoomController{
             return;
         }
 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $content = trim($_POST['content'] ?? '');
+
+            if ($content !== '') {
+                $messageRepository->createMessage($content, $id);
+                header('Location: index.php?page=message&id=' . $id);
+                exit;
+            }
+        }
+
         $rooms = $roomRepository->findRooms();
         $messages = $messageRepository->getMessagesByRoom($id);
 
@@ -66,5 +77,4 @@ class RoomController{
 
         require __DIR__ . '/../views/layout.phtml';
     }
-    
 }

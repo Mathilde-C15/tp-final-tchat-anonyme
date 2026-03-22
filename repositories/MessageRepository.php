@@ -15,7 +15,7 @@ class MessageRepository {
     }
 
     public function getMessagesByRoom(int $roomId): array {
-        $stmt = $this->pdo->prepare("SELECT * FROM message WHERE id_room = :id_room ORDER BY date DESC");
+        $stmt = $this->pdo->prepare("SELECT * FROM message WHERE id_room = :id_room ORDER BY date");
         $stmt->execute(['id_room' => $roomId]);
 
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -23,15 +23,27 @@ class MessageRepository {
         $messages = [];
 
         foreach ($rows as $row) {
-            $message = new Message();
-            $message->setId($row['id']);
-            $message->setContent($row['content']);
-            $message->setDate($row['date']);
-            $message->setRoomId($row['id_room']);
+            $message = new Message(
+                (int) $row['id'],
+                $row['content'],
+                $row['date'],
+                $row['pinned'],
+                (int) $row['id_room']
+            );
 
             $messages[] = $message;
         }
 
         return $messages;
-    }   
+    }
+
+    public function createMessage(string $content, int $roomId): void{
+        $stmt = $this->pdo->prepare("INSERT INTO message (content, date, id_room) VALUES (:content, NOW(), :id_room)
+        ");
+
+        $stmt->execute([
+            'content' => $content,
+            'id_room' => $roomId
+        ]);
+    }
 }
