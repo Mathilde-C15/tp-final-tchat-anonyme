@@ -1,0 +1,61 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+
+    &.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .create-room {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        min-width: 300px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transform: scale(0.9);
+        transition: transform 0.2s ease;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            input {
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+            }
+
+            button {
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+
+                &.cancel {
+                    background: #ccc;
+                }
+
+                &:not(.cancel) {
+                    background: #4CAF50;
+                    color: white;
+                }
+            }
+        }
+    }
+
+    &.active .create-room {
+        transform: scale(1);
+    }
+}

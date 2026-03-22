@@ -28,7 +28,7 @@ class RoomRepository{
 
     // retourne toutes les rooms
     public function findRooms(){
-        $stmt = $this->pdo->query("SELECT * FROM room ORDER BY name DESC");
+        $stmt = $this->pdo->query("SELECT * FROM room ORDER BY name");
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $rooms = [];

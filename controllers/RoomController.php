@@ -16,12 +16,19 @@ class RoomController{
     }
 
 
-    public function create(): void{
-        if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-            $name = $_POST['name'] ?? '';
+
+
+    public function create(): void {
+        $repository = new RoomRepository();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $name = trim($_POST['name'] ?? '');
 
             try {
-                $repository = new RoomRepository();
+                if ($name === '') {
+                    throw new \Exception("Le nom du salon est obligatoire.");
+                }
+
                 $repository->createRoom($name);
 
                 header('Location: index.php?page=room');
@@ -32,8 +39,7 @@ class RoomController{
         }
 
         $rooms = $repository->findRooms();
-        $view = "views/room/create.phtml";
-
+        $view = "views/room/createRoom.phtml";
         require "views/layout.phtml";
     }
 
