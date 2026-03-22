@@ -10,7 +10,6 @@ class RoomController{
         $repository = new RoomRepository();
         $rooms = $repository->findRooms();
 
-        $title = "Liste des salons";
         $view = "views/room/room.phtml";
 
         require "views/layout.phtml";
@@ -25,16 +24,15 @@ class RoomController{
                 $repository = new RoomRepository();
                 $repository->createRoom($name);
 
-                header('Location: index.php.page=room');
+                header('Location: index.php?page=room');
                 exit;
             } catch (\Exception $e) {
-                $error = $e-getMessage();
+                $error = $e->getMessage();
             }
         }
 
         $rooms = $repository->findRooms();
-        $title = "Créer un salon";
-        $view = "views/room/room.phtml";
+        $view = "views/room/create.phtml";
 
         require "views/layout.phtml";
     }

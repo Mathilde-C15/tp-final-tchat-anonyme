@@ -9,6 +9,11 @@ body {
     flex-wrap: wrap;
 }
 
+.content {
+    width: 100%;
+}
+
 @import 'variables';
 @import 'layout';
+@import 'about';
 @import 'room';

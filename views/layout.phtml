@@ -4,28 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/tp-final-tchat-anonyme/assets/css/style.css">
-    <title>Tchat Anonyme</title>
+    <script src="assets/javascript/script.js"></script>
+    <title>Drocsid</title>
 </head>
 <body>
     <header>
         <div>
-            <h1>Tchat anonyme</h1>
+            <h1>Drocsid</h1>
             <img src="assets/images/logo.png" alt="Logo tchat anonyme">
         </div>
         <div>
-            <a href="index.php?url=room">Chat</a>
-            <a href="index.php?url=about">A propos</a>
+            <a href="index.php?page=room">Chat</a>
+            <a href="index.php?page=about">A propos</a>
         </div>
     </header>
 
     <main>
         <?php if (!isset($showSidebar) || $showSidebar !== false): ?>
             <aside class="rooms">
-                <?php include "views/room/room.phtml" ?>
+                <?php include "views/sidebar/sidebar_rooms.phtml" ?>
             </aside>
         <?php endif; ?>
 
-        <section>
+        <section class="content">
             <?php include $view ?>
         </section>
 
